@@ -1,0 +1,13 @@
+#+TITLE: SOCKS5 Cloudflare WARP Container [[https://github.com/Kab1r/cloudflare-warp-container/pkgs/container/cloudflare-warp-container][https://github.com/Kab1r/cloudflare-warp-container/workflows/Container%20Images/badge.svg]]
+
+** Environment Variables
+| Variable                        | Default | Description                                              |
+|---------------------------------+---------+----------------------------------------------------------|
+| WARP_PORT                       | 40001   | SOCKS5 TCP Port (40000 is not allowed)                   |
+| WARP_MANUAL                     | false   | Skip Anonymous Registration                              |
+| WARP_TEAMS_ACCESS_CLIENT_ID     | ""      | Teams Client ID (Teams Standard and Enterprise only)     |
+| WARP_TEAMS_ACCESS_CLIENT_SECRET | ""      | Teams Client Secret (Teams Standard and Enterprise only) |
+
+** Image Variations
++ Debian: =ghcr.io/kab1r/cloudflare-warp-container:debian-main=
++ CentOS: =ghcr.io/kab1r/cloudflare-warp-container:centos-main=

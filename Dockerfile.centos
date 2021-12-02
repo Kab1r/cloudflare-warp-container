@@ -1,0 +1,19 @@
+# -*- mode: Dockerfile;-*-
+FROM centos
+LABEL maintainer="kabir@kwatra.me"
+ENV WARP_PROXY_PORT=40001
+
+RUN rpm -ivh http://pkg.cloudflareclient.com/cloudflare-release-el8.rpm
+RUN dnf install -y         \
+    cloudflare-warp        \
+    socat                  \
+  && dnf clean all         \
+  && rm -rf /var/cache/dnf \
+  && rm -rf /var/cache/yum
+
+RUN mkdir --parents /var/lib/cloudflare-warp
+RUN echo '{"always_on": true, "operation_mode": "WarpProxy"}' > /var/lib/cloudflare-warp/settings.json
+
+COPY warp-init.sh /
+
+ENTRYPOINT ["/warp-init.sh"]
